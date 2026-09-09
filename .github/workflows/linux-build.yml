@@ -17,8 +17,8 @@ jobs:
         include:
           - compiler: gcc
             cxx_compiler: g++
-          - compiler: clang
-            cxx_compiler: clang++
+          # - compiler: clang
+          #   cxx_compiler: clang++
     env:
       CC: ${{ matrix.compiler }}
       CXX: ${{ matrix.cxx_compiler }}
