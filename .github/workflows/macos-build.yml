@@ -71,21 +71,21 @@ jobs:
       - name: Build and test
         run: make test
 
-      - name: Create distributable
-        if: matrix.create-distributable
-        run: |
-          make install
-          tar -cjvf rime-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2 \
-          dist version-info.txt
-          tar -cjvf rime-deps-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2 \
-          --exclude '*/.placeholder' \
-          bin include lib share
+      # - name: Create distributable
+      #   if: matrix.create-distributable
+      #   run: |
+      #     make install
+      #     tar -cjvf rime-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2 \
+      #     dist version-info.txt
+      #     tar -cjvf rime-deps-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2 \
+      #     --exclude '*/.placeholder' \
+      #     bin include lib share
 
-      - name: Upload artifacts
-        if: matrix.create-distributable
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}
-          path: |
-            rime-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2
-            rime-deps-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2
+      # - name: Upload artifacts
+      #   if: matrix.create-distributable
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: artifact-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}
+      #     path: |
+      #       rime-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2
+      #       rime-deps-${{ env.git_ref_name }}-${{ runner.os }}-${{ matrix.build_variant || runner.arch }}.tar.bz2
