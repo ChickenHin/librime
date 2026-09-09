@@ -1,11 +1,11 @@
 name: Release CI
 
 on:
-  push:
-    branches:
-      - master
-    tags:
-      - '[0-9]+.*'
+  # push:
+  #   branches:
+  #     - master
+  #   tags:
+  #     - '[0-9]+.*'
   workflow_dispatch:
 
 jobs:
